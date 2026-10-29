@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f2f7f4; /* أخضر خفيف جداً مريح للعين */
+    background-color: #f2f7f4;
     padding: 20px;
     color: #2e4a3b;
 }
@@ -22,16 +22,16 @@ body {
     color: #1b4332;
 }
 
-.quick-add {
+/* تنسيق فورم الإدخال الجديد */
+.expense-form {
     display: flex;
     justify-content: center;
     gap: 8px;
-    max-width: 320px;
+    max-width: 450px;
     margin: 0 auto;
 }
 
-.quick-add input {
-    width: 100%;
+.expense-form input {
     padding: 10px 14px;
     border: 2px solid #b7e4c7;
     border-radius: 8px;
@@ -40,11 +40,19 @@ body {
     background-color: #ffffff;
 }
 
-.quick-add input:focus {
+#item-name {
+    flex: 2;
+}
+
+#item-price {
+    flex: 1;
+}
+
+.expense-form input:focus {
     border-color: #52b788;
 }
 
-.quick-add button {
+.expense-form button {
     padding: 10px 18px;
     background-color: #52b788;
     color: white;
@@ -56,11 +64,11 @@ body {
     transition: 0.2s;
 }
 
-.quick-add button:hover {
+.expense-form button:hover {
     background-color: #40916c;
 }
 
-/* شبكة كروت البادلت بجانب بعضها */
+/* شبكة كروت الشهور */
 .boards-grid {
     display: flex;
     flex-wrap: wrap;
@@ -69,12 +77,11 @@ body {
     align-items: flex-start;
 }
 
-/* كارت الشهر الواحد */
 .month-card {
     background-color: #e8f5e9;
     border: 1px solid #c8e6c9;
     border-radius: 12px;
-    width: 280px;
+    width: 300px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
     display: flex;
@@ -82,7 +89,7 @@ body {
 }
 
 .month-card.current {
-    border: 2px solid #52b788; /* تمييز الشهر الحالي */
+    border: 2px solid #52b788;
     background-color: #ebf7ed;
 }
 
