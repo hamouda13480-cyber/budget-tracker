@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصاريف الشهور</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-header">
+        <h1>📊 مصاريف الشهور</h1>
+        
+        <!-- قسم إضافة مصاريف جديدة بسرعة -->
+        <div class="quick-add">
+            <input type="number" id="quick-price" placeholder="أدخل المبلغ..." step="any">
+            <button id="add-btn">إضافة</button>
+        </div>
+    </div>
+
+    <!-- شبكة الشهور (تظهر الكروت بجانب بعضها شبه بادلت) -->
+    <div class="boards-grid" id="boards-grid">
+        <!-- يتم توليد كروت الشهور هنا تلقائياً -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
