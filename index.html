@@ -11,14 +11,15 @@
     <div class="app-header">
         <h1>📊 مصاريف الشهور</h1>
         
-        <!-- قسم إضافة مصاريف جديدة بسرعة -->
-        <div class="quick-add">
-            <input type="number" id="quick-price" placeholder="أدخل المبلغ..." step="any">
+        <!-- قسم الإدخال المحدث (اسم الحاجة + السعر) -->
+        <div class="expense-form">
+            <input type="text" id="item-name" placeholder="اسم الحاجة التي اشتريتها...">
+            <input type="number" id="item-price" placeholder="السعر..." step="any">
             <button id="add-btn">إضافة</button>
         </div>
     </div>
 
-    <!-- شبكة الشهور (تظهر الكروت بجانب بعضها شبه بادلت) -->
+    <!-- شبكة الشهور (البادلت) -->
     <div class="boards-grid" id="boards-grid">
         <!-- يتم توليد كروت الشهور هنا تلقائياً -->
     </div>
