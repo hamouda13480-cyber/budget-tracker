@@ -1,17 +1,15 @@
-// استرجاع البيانات المحفوظة أو إنشاء كائن جديد
 let monthData = JSON.parse(localStorage.getItem('padlet_budget_data')) || {};
 
-const quickPriceInput = document.getElementById('quick-price');
+const itemNameInput = document.getElementById('item-name');
+const itemPriceInput = document.getElementById('item-price');
 const addBtn = document.getElementById('add-btn');
 const boardsGrid = document.getElementById('boards-grid');
 
-// دالة لمعرفة اسم الشهر والسنة الحاليين تلقائياً من تقويم الجهاز
 function getCurrentMonthKey() {
     const now = new Date();
     return now.toLocaleString('ar', { month: 'long', year: 'numeric' });
 }
 
-// التأكد من إنشاء كارت للشهر الحالي تلقائياً
 function ensureCurrentMonthExists() {
     const currentKey = getCurrentMonthKey();
     if (!monthData[currentKey]) {
@@ -21,42 +19,43 @@ function ensureCurrentMonthExists() {
     return currentKey;
 }
 
-// تشغيل الفحص والعرض عند فتح الصفحة
 ensureCurrentMonthExists();
 renderBoards();
 
-// إضافة مبلغ جديد عند الضغط على زر الإضافة أو زر Enter
 addBtn.addEventListener('click', addExpense);
-quickPriceInput.addEventListener('keypress', (e) => {
+itemPriceInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addExpense();
 });
 
 function addExpense() {
-    const price = parseFloat(quickPriceInput.value);
-    if (isNaN(price) || price <= 0) return;
+    const name = itemNameInput.value.trim();
+    const price = parseFloat(itemPriceInput.value);
 
-    // إضافة السعر تلقائياً لكارت الشهر الحالي
+    if (name === '' || isNaN(price) || price <= 0) return;
+
     const currentKey = ensureCurrentMonthExists();
     
     monthData[currentKey].push({
         id: Date.now(),
+        name: name,
         amount: price
     });
 
     saveData();
     renderBoards();
-    quickPriceInput.value = '';
-    quickPriceInput.focus();
+
+    // تفريغ الحقول وإرجاع التركيز لاسم الحاجة
+    itemNameInput.value = '';
+    itemPriceInput.value = '';
+    itemNameInput.focus();
 }
 
-// حذف سعر معين من الشهر المحدد
 function deleteExpense(monthKey, id) {
     monthData[monthKey] = monthData[monthKey].filter(item => item.id !== id);
     saveData();
     renderBoards();
 }
 
-// عرض جميع كروت الشهور بجانب بعضها
 function renderBoards() {
     boardsGrid.innerHTML = '';
     const currentKey = getCurrentMonthKey();
@@ -74,7 +73,7 @@ function renderBoards() {
             total += item.amount;
             itemsHTML += `
                 <li class="expense-item">
-                    <span>${item.amount}</span>
+                    <span>${item.name}: <strong>${item.amount}</strong></span>
                     <button class="del-btn" onclick="deleteExpense('${monthKey}', ${item.id})">✕</button>
                 </li>
             `;
