@@ -22,7 +22,7 @@ body {
     color: #1b4332;
 }
 
-/* تنسيق فورم الإدخال الجديد */
+/* فورم الإدخال */
 .expense-form {
     display: flex;
     justify-content: center;
@@ -140,4 +140,29 @@ body {
     font-weight: bold;
     color: #1b4332;
     font-size: 1.05rem;
+}
+
+/* --- تعديلات التجاوب للأجهزة الصغيرة (الموبايل) --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .expense-form {
+        flex-direction: column; /* تحويل حقول الإدخال لتكون تحت بعضها على الشاشات الصغيرة */
+        gap: 10px;
+        max-width: 100%;
+    }
+
+    #item-name, #item-price {
+        width: 100%;
+    }
+
+    .expense-form button {
+        width: 100%;
+    }
+
+    .month-card {
+        width: 100%; /* جعل كارت الشهر يأخذ عرض الشاشة بالكامل على الموبايل */
+    }
 }
